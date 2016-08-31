@@ -26,6 +26,17 @@ def single_quote(request,qn):
 		# print(request.query_params)
 		symbol = qn
 		r = requests.get(api_url+'getQuote.json?key='+api_key+'&symbols='+symbol)
-		print(r.url)
-		return HttpResponse(r)
+		# print(r['results'])
+		# price = r['results'][0]['lastPrice']
+		# date = r['results'][0]['tradeTimestamp']
+		print(r.json())
+		return HttpResponse(r.json()['results'][0]['lastPrice'])
 		# return Request(api_url+'getQuote.json/?key='+api_key+'&symbols='+symbol)
+
+@api_view(['GET',])
+def dash_view(request):
+	"""
+	dashboard view
+	contains: Dow, nasdaq, s&p
+	"""
+	return HttpResponse('dashview')

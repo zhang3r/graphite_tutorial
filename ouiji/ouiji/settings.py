@@ -72,6 +72,13 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'ouiji.wsgi.application'
 
+#CELERY STUFF
+BROKER_URL = 'redis://localhost:6379'
+CELERY_RESULT_BACKEND = 'redis://localhost:6379'
+CELERY_ACCEPT_CONTENT = ['application/json']
+CELERY_TASK_SERIALIZER = 'json'
+CELERY_RESULT_SERIALIZER = 'json'
+CELERY_TIMEZONE = 'Africa/Nairobi'
 
 # Database
 # https://docs.djangoproject.com/en/1.9/ref/settings/#databases
